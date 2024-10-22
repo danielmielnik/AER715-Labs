@@ -28,29 +28,23 @@ Wc = Mc*g; % Weight of CW (N)
 
 %% Question 1
 fprintf('Question 1')
-
 Je = (Mh * La^2) + (Mc * Lb^2) % Elevation Axis (kg-m^2)
 
 %% Question 2
 fprintf('Question 2')
-
 epsilon_dd = 0; % Figure this out
 Tg = Lb*Wc - La*Wh;
 Ft = (Je*epsilon_dd - Tg)/La % Lift force (N)
 
 %% Question 3
 fprintf('Question 3')
-
 Vsum = Ft/Kf % Velocity required to keep helicopter at steady level flight (m/s)
 
 %% Question 4
 fprintf('Question 4')
-
 G4_elev1 = tf(La*Kf, Je) % G elev transfer function
 
 %% Question 5
-fprintf('Question 5')
-
 load elevationData1.mat
 load elevationData2.mat
 load elevationData3.mat
@@ -70,7 +64,7 @@ plot(time, e1, time, e2, time, e3)
 title('Elevation Vs Time')
 xlabel('Time (s)')
 ylabel('Elevation (m)')
-legend('Elevation 1', 'Elevation 2', 'Elevation 3')
+legend('Test 1', 'Test 2', 'Test 3')
 
 data1 = iddata(transpose(e1), transpose(v1), 0.1);
 data2 = iddata(transpose(e2), transpose(v2), 0.1);
@@ -86,22 +80,11 @@ G4_elev3 = tfest(mergedData, 3, 0);
 [num3, denom3] = tfdata(G4_elev3, 'v')
 
 %% Question 6
-fprintf('Question 6')
-
 poles_elev2 = pole(G4_elev2)
 poles_elev3 = pole(G4_elev3)
 
 %% Question 7
-fprintf('Question 7')
-
-figure(2)
-step(G4_elev1, G4_elev2, G4_elev3)
-title('Amplitude Vs Time')
-xlabel('Time (s)')
-ylabel('Amplitude')
-legend('Elevation 1', 'Elevation 2', 'Elevation 3')
-
-%% Question 8
+step_elev1 = step(G)
 
 %% Conclusion
 % Write your lab conclusion for the WHOLE lab in this section.
