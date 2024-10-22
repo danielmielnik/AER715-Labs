@@ -45,6 +45,36 @@ fprintf('Question 4')
 G4_elev1 = tf(La*Kf, Je) % G elev transfer function
 
 %% Question 5
+load elevationData1.mat
+load elevationData2.mat
+load elevationData3.mat
+
+time = elev1(1, 1:end);
+
+v1 = elev1(2, 1:end);
+v2 = elev2(2, 1:end);
+v3 = elev3(2, 1:end);
+
+e1 = elev1(3, 1:end);
+e2 = elev2(3, 1:end);
+e3 = elev3(3, 1:end);
+
+figure(1)
+plot(time, e1, time, e2, time, e3)
+title('Elevation Vs Time')
+xlabel('Time (s)')
+ylabel('Elevation (m)')
+legend('Test 1', 'Test 2', 'Test 3')
+
+data1 = iddata(transpose(e1), transpose(v1), 0.1);
+data2 = iddata(transpose(e2), transpose(v2), 0.1);
+data3 = iddata(transpose(e3), transpose(v3), 0.1);
+
+mergedData = merge(data1, data2, data3);
+
+G2_elev2 = tfest(mergedData, 2, 0);
+G3_elev3 = tfest(mergedData, 3, 0);
+
 
 
 
