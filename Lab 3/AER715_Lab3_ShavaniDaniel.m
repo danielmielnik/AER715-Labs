@@ -46,7 +46,7 @@ Vsum = Ft/Kf % Velocity required to keep helicopter at steady level flight (m/s)
 %% Question 4
 fprintf('Question 4')
 
-G4_elev1 = tf(La*Kf, Je) % G elev transfer function
+G4_elev1 = tf(La*Kf, [Je 0 0]) % G elev transfer function
 
 %% Question 5
 fprintf('Question 5')
@@ -72,9 +72,9 @@ xlabel('Time (s)')
 ylabel('Elevation (m)')
 legend('Elevation 1', 'Elevation 2', 'Elevation 3')
 
-data1 = iddata(transpose(e1), transpose(v1), 0.1);
-data2 = iddata(transpose(e2), transpose(v2), 0.1);
-data3 = iddata(transpose(e3), transpose(v3), 0.1);
+data1 = iddata(transpose(e1), transpose(v1), 0.01);
+data2 = iddata(transpose(e2), transpose(v2), 0.01);
+data3 = iddata(transpose(e3), transpose(v3), 0.01);
 
 mergedData = merge(data1, data2, data3);
 
@@ -99,6 +99,7 @@ step(G4_elev1, G4_elev2, G4_elev3)
 title('Amplitude Vs Time')
 xlabel('Time (s)')
 ylabel('Amplitude')
+axis ([ 0 40, 0 0.05])
 legend('Elevation 1', 'Elevation 2', 'Elevation 3')
 
 %% Question 8
