@@ -1,0 +1,10 @@
+Lab 4
+
+% PID1 = pid(C)
+PID1 =
+ 
+             1          
+  Kp + Ki * --- + Kd * s
+             s          
+
+  with Kp = 3.95, Ki = 0.517, Kd = 9.66
