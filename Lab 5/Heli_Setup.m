@@ -6,17 +6,16 @@ heli = 4;
 
 % VSUM - FOR LAB 3 ONLY
 
-Vsum = 5.046503;   %
+Vsum = 22.8;   %
 
 % CONTROLLER GAINS - FOR LAB 5 ONLY
 
-Kp = 0;
-Ki = 0;
-Kd = 0;
-Kpt = 0;
-Kit = 0;
-Kdt = 0; 
-
+Kp = ;
+Ki = ;
+Kd = ;
+Kpt = ;
+Kit = ;
+Kdt = ; 
 %-----[HELI SET VARIABLES]--------
 % THESE VARIABLE ARE SPECIFIC TO EACH HELICOPTER
 TRAV_SS = 90;
