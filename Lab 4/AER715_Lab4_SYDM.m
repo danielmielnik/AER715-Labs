@@ -151,6 +151,19 @@ figure(10)
 step(feedback_trav)
 title('Step Response of Travel')
 
+% In summary, the Kd component of the PID controller is responsible for 
+% damping the system by reacting to the rate of change of the error signal. 
+% This is particularly important in the travel system, where rapid 
+% stabilization is necessary. The Kd gain is higher than both Kp and Ki 
+% because it helps reduce overshoot and oscillations, thus making the system 
+% more stable and less prone to fluctuations. The larger Kd value enhances 
+% the damping effect, allowing the travel system to settle more smoothly and 
+% avoid amplitude fluctuations. In contrast, Kp and Ki primarily adjust the 
+% system's responsiveness and steady-state behavior, but they don't provide 
+% the same level of stabilization as Kd. The increased Kd gain in the travel 
+% system step response reflects the need for strong damping to control the 
+% system’s behavior efficiently.
+
 %% Question 5
 % Displaying characteristic information of the step response for different elevation systems
 fprintf('Characteristic information of step response for elevation 1:\n')
@@ -170,6 +183,7 @@ stepinfo(feedback_elev3)
 % The system exhibits an overshoot of 25.9069%, which suggests that it initially 
 % exceeds the desired value before stabilizing.
 % Peak occurs at 3.7764 seconds with a maximum value of 1.2591.
+
 % Step response information for Elevation 2:
 % Rise time is 7.5014, which is slower compared to elevation 1, indicating a less 
 % responsive system.
@@ -178,7 +192,6 @@ stepinfo(feedback_elev3)
 % There is a very small overshoot of 0.0822%, indicating minimal oscillations before 
 % the system reaches its final value.
 % The peak occurs at 14.0644 seconds, with a maximum value of 1.0008.
-
 % Step response information for Elevation 3:
 % Rise time is 5.1223, which is faster than elevation 2 but slower than elevation 1.
 % Transient and settling times are both 8.7398, indicating this system stabilizes 
@@ -189,10 +202,12 @@ stepinfo(feedback_elev3)
 
 % In summary, the differences in rise time, overshoot, and settling time across
 % the different elevation systems can be attributed to the tuning of their respective
-% PID controllers, which control how the system reacts to input changes. Systems
-% with faster rise times generally show higher overshoot, while those with slower 
+% PID controllers, which control how the system reacts to input changes. 
+% Systems with faster rise times generally show higher overshoot, while those with slower 
 % responses have lower overshoot but take longer to settle. The absence of overshoot
-% in elevation 3 shows a more dampened system response.
+% in elevation 3 shows a more dampened system response. This highlights how adjusting
+% PID controller gains can lead to different system behaviors, balancing response speed 
+% with stability and overshoot.
 
 %% Question 6
 %load elevationData1.mat
@@ -233,3 +248,31 @@ hold off
 title('Gain Voltage of Elevation 3')
 xlabel('Time (s)')
 ylabel('Voltage (V)')
+
+% Discussion of Results
+% By examining the gain voltages for each PID controller, we can observe
+% how each individual gain (Kp, Ki, Kd) influences the control system behavior. 
+% In the case of each elevation system, we notice that:
+% - Kp (Proportional Gain) typically determines the system's initial response to the error.
+% - Ki (Integral Gain) helps eliminate steady-state error but may introduce some oscillations 
+%   or slower stabilization as it accumulates error over time.
+% - Kd (Derivative Gain), on the other hand, provides damping to the system, as seen in
+%   the elevation systems where the Kd gain is generally higher than Kp and Ki. 
+%   This higher Kd value results in a more dampened response, reducing overshoot 
+%   and improving the system's stability by slowing down the rate of change of the error.
+
+% In the plots of each elevation system's gain voltages, it can be observed that:
+% - The Kp gain contributes to the initial error reduction, causing the system to respond
+%   quickly but may leave some steady-state error.
+% - The Ki gain acts to eliminate steady-state error, but as observed, it can lead to
+%   slower settling or small oscillations depending on its magnitude.
+% - The Kd gain plays a critical role in damping, which is particularly noticeable in
+%   elevation systems where the Kd gain is set higher. This results in less overshoot 
+%   and quicker stabilization of the system, ensuring better stability in the face of
+%   sudden changes in the input.
+
+% In summary, the variation in Kp, Ki, and Kd across the three elevation systems can be
+% attributed to their specific tuning in the PID controller, which helps optimize system 
+% performance, stability, and response time. Each PID controller is designed to balance 
+% these factors, with the Kd term playing a significant role in reducing oscillations and 
+% stabilizing the system, as evident from the plots.

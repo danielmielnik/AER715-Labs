@@ -1,0 +1,2 @@
+#include <winuser.rh>
+1 RT_MANIFEST "Heli_Controller_Testing.auto.manifest"
