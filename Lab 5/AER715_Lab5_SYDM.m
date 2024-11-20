@@ -65,7 +65,7 @@ PID_trav = pid(351, 63.4, 540);
 
 
 % Closed-Loop Transfer Functions | Travel
-feedback_trav = feedback(G4_trav_stock*PID_trav, 1)
+feedback_trav = feedback(G4_trav_stock*PID_trav, 1);
 
 % Experimental Data | Travel
 time_experimental_travel = etrav2.trav1Data.time(2426:3926);
