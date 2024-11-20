@@ -61,14 +61,15 @@ etrav3 = load('Lab 5 Data/e3travD.mat');
 % Travel Data from Lab 4
 G4_trav_stock = 0.002362/(s^2);
 
+PID_trav = pid(351, 63.4, 540);
+
+
 % Closed-Loop Transfer Functions | Travel
-feedback_trav1 = feedback(G4_trav*PID1, 1);
-feedback_trav2 = feedback(G4_trav*PID2, 1);
-feedback_trav3 = feedback(G4_trav*PID3, 1);
+feedback_trav = feedback(G4_trav_stock*PID_trav, 1)
 
 % Experimental Data | Travel
-time_experimental_travel = etrav3.trav1Data.time(2426:3926);
-trav_experimental = etrav3.trav1Data.signals.values(2426:3926, 2);
+time_experimental_travel = etrav2.trav1Data.time(2426:3926);
+trav_experimental = etrav2.trav1Data.signals.values(2426:3926, 2);
 
 % Stock Data | Travel
 PID_travel_stock = pid(98, 0, 300);
@@ -77,7 +78,7 @@ feedback_travel_stock = feedback(G4_trav_stock*PID_travel_stock, 1);
 % Plotting Travel Data
 figure(2);
 hold on;
-step(feedback_trav2*90, [25, 40]);
+step(feedback_trav*90, [25, 40]);
 step(feedback_travel_stock*90, [25, 40]);
 plot(time_experimental_travel, trav_experimental)
 title('Comparison for Travel Data');
